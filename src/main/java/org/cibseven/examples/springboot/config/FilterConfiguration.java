@@ -47,7 +47,7 @@ public class FilterConfiguration {
         // Init parameters
         registrationBean.addInitParameter(
             "authentication-provider",
-            "org.cibseven.bpm.engine.rest.security.auth.impl.CompositeAuthenticationProvider"
+            org.cibseven.bpm.engine.rest.security.auth.impl.CompositeAuthenticationProvider.class.getName()
         );
         registrationBean.setOrder(10);// Order of execution if multiple filters
         return registrationBean;
