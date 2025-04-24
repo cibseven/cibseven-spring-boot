@@ -4,3 +4,4 @@
 /.project
 /.settings/
 /cibseven.mv.db
+/src/main/resources/cibseven-webclient.properties
