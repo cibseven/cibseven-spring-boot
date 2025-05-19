@@ -20,26 +20,26 @@ public class FilterConfiguration {
         
         // Apply to all URLs under engine-rest except /engine-rest/identity/verify
         registrationBean.setUrlPatterns(Arrays.asList(
-            "/process-definition/*",
-            "/process-instance/*",
-            "/history/*",
-            "/execution/*",
-            "/batch/*",
-            "/decision-definition/*",
-            "/deployment/*",
-            "/filter/*",
-            "/incident/*",
-            "/job-definition/*",
-            "/job/*",
-            "/telemetry/*",
-            "/metrics/*",
-            "/authorization/*",
-            "/group/*",
-            "/user/*",
-            "/message/*",
-            "/event-subscription/*",
-            "/variable-instance/*",
-            "/task/*"
+            "/engine-rest/process-definition/*",
+            "/engine-rest/process-instance/*",
+            "/engine-rest/history/*",
+            "/engine-rest/execution/*",
+            "/engine-rest/batch/*",
+            "/engine-rest/decision-definition/*",
+            "/engine-rest/deployment/*",
+            "/engine-rest/filter/*",
+            "/engine-rest/incident/*",
+            "/engine-rest/job-definition/*",
+            "/engine-rest/job/*",
+            "/engine-rest/telemetry/*",
+            "/engine-rest/metrics/*",
+            "/engine-rest/authorization/*",
+            "/engine-rest/group/*",
+            "/engine-rest/user/*",
+            "/engine-rest/message/*",
+            "/engine-rest/event-subscription/*",
+            "/engine-rest/variable-instance/*",
+            "/engine-rest/task/*"
         ));
         registrationBean.setName("cibseven-composite-auth");
         // Enable async support
