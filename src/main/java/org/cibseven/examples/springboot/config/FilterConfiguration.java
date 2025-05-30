@@ -1,8 +1,7 @@
 package org.cibseven.examples.springboot.config;
 
-
 import org.cibseven.bpm.engine.rest.security.auth.ProcessEngineAuthenticationFilter;
-
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,34 +11,43 @@ import java.util.Arrays;
 @Configuration
 public class FilterConfiguration {
 
+    @Value("${spring.jersey.application-path:/engine-rest}")
+    private String applicationPath;
+
     @Bean
     public FilterRegistrationBean<ProcessEngineAuthenticationFilter> AuthenticationFilter() {
-    	// Composite Authentication Filter with Jwt Token and Http Basic
+        // Composite Authentication Filter with Jwt Token and Http Basic
         FilterRegistrationBean<ProcessEngineAuthenticationFilter> registrationBean = new FilterRegistrationBean<>();
         registrationBean.setFilter(new ProcessEngineAuthenticationFilter());
         
-        // Apply to all URLs under engine-rest except /engine-rest/identity/verify
+        // Ensure application path starts with / and doesn't end with /
+        String basePath = applicationPath.startsWith("/") ? applicationPath : "/" + applicationPath;
+        if (basePath.endsWith("/")) {
+            basePath = basePath.substring(0, basePath.length() - 1);
+        }
+        
+        // Apply to all URLs under the configured application path, except /engine-rest/identity/verify
         registrationBean.setUrlPatterns(Arrays.asList(
-            "/engine-rest/process-definition/*",
-            "/engine-rest/process-instance/*",
-            "/engine-rest/history/*",
-            "/engine-rest/execution/*",
-            "/engine-rest/batch/*",
-            "/engine-rest/decision-definition/*",
-            "/engine-rest/deployment/*",
-            "/engine-rest/filter/*",
-            "/engine-rest/incident/*",
-            "/engine-rest/job-definition/*",
-            "/engine-rest/job/*",
-            "/engine-rest/telemetry/*",
-            "/engine-rest/metrics/*",
-            "/engine-rest/authorization/*",
-            "/engine-rest/group/*",
-            "/engine-rest/user/*",
-            "/engine-rest/message/*",
-            "/engine-rest/event-subscription/*",
-            "/engine-rest/variable-instance/*",
-            "/engine-rest/task/*"
+            basePath + "/process-definition/*",
+            basePath + "/process-instance/*",
+            basePath + "/history/*",
+            basePath + "/execution/*",
+            basePath + "/batch/*",
+            basePath + "/decision-definition/*",
+            basePath + "/deployment/*",
+            basePath + "/filter/*",
+            basePath + "/incident/*",
+            basePath + "/job-definition/*",
+            basePath + "/job/*",
+            basePath + "/telemetry/*",
+            basePath + "/metrics/*",
+            basePath + "/authorization/*",
+            basePath + "/group/*",
+            basePath + "/user/*",
+            basePath + "/message/*",
+            basePath + "/event-subscription/*",
+            basePath + "/variable-instance/*",
+            basePath + "/task/*"
         ));
         registrationBean.setName("cibseven-composite-auth");
         // Enable async support
