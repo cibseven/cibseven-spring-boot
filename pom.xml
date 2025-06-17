@@ -74,20 +74,21 @@
 		<dependency>
 		    <groupId>org.cibseven.spin</groupId>
 		    <artifactId>cibseven-spin-core</artifactId>
-		    <version>${spin.version}</version>
-	  	</dependency>
-  
-		<dependency>
-		    <groupId>org.cibseven.spin</groupId>
-		    <artifactId>cibseven-spin-dataformat-all</artifactId>
-		    <version>${spin.version}</version>
-		</dependency>
-  
+		    <version>${project.version}</version>
+	  	</dependency>       
+	  	
 		<dependency>
 		    <groupId>org.cibseven.spin</groupId>
 		    <artifactId>cibseven-spin-dataformat-json-jackson</artifactId>
-		    <version>${spin.version}</version>
+		    <version>${project.version}</version>
 		</dependency>
+  
+  <!-- ALTERNATIVE: SPINJAR MODULE SHADES IN SPINJAR AND BUNDLES DATAFORMAT-ALL AND REQUIRED EXTERNAL JACKSON MODULE -->
+		<dependency>
+		    <groupId>org.cibseven.bpm.springboot</groupId>
+		    <artifactId>spinjar-module</artifactId>
+		    <version>${project.version}</version>
+		</dependency>  
 		
 		<dependency>
 			<groupId>com.h2database</groupId>

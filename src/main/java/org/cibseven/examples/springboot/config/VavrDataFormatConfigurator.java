@@ -1,7 +1,7 @@
 package org.cibseven.examples.springboot.config;
 
 import spinjar.com.fasterxml.jackson.databind.ObjectMapper;
-import io.vavr.jackson.datatype.VavrModule;
+import spinjar.io.vavr.jackson.datatype.VavrModule;
 import org.cibseven.spin.spi.DataFormatConfigurator;
 import org.cibseven.spin.impl.json.jackson.format.JacksonJsonDataFormat;
 import org.cibseven.spin.spi.DataFormat;
