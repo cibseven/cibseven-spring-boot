@@ -27,7 +27,7 @@ public class FilterConfiguration {
         }
         
         // Apply to all URLs under the configured application path, except /engine-rest/identity/verify
-        registrationBean.addUrlPatterns("/*");
+        registrationBean.addUrlPatterns(basePath + "/*");
         registrationBean.setName("cibseven-composite-auth");
         // Enable async support
         registrationBean.setAsyncSupported(true);
